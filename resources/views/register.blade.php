@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @vite('resources/css/app.css')
-    <title>Login</title>
+    <title>Register</title>
 </head>
 <body>
 <section class="bg-gray-50">
@@ -21,7 +21,7 @@
                     @csrf
                     <div>
                         <label for="user_name" class="block mb-2 text-sm font-medium text-gray-900 ">User name</label>
-                        <input type="text" name="name" id="user_name" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  " placeholder="Ex: username123">
+                        <input type="text" name="user_name" id="user_name" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  " placeholder="Ex: username123">
                     </div>
                     <div>
                         <label for="user_name" class="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
