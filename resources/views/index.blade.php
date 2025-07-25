@@ -11,7 +11,7 @@
 
 @else
     <a class="btn btn-error" href="/login">Login</a>
-    <a class="btn btn-error" href="/register">Regisger</a>
+    <a class="btn btn-info" href="/register">Register</a>
 
 @endauth
 
