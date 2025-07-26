@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class EmployeeInfoController extends Controller
 {
@@ -18,6 +19,7 @@ class EmployeeInfoController extends Controller
             'contactNum' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'emp_stat' => ['required', 'string', 'max:255'],
+            'employee_id' => [ 'string', 'max:255', Rule::unique('employment_info', 'employeeID')],
         ]);
     }
 }
