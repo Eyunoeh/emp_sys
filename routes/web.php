@@ -53,4 +53,4 @@ Route::post('/userlogin', [UserController::class, 'login']);
 Route::post('/userregister', [UserController::class, 'register']);
 
 //EmployeeInfo
-Route::post('/employeee/addemployee', [EmployeeInfoController::class, 'addEmployee']);
+Route::post('/employee/new-employee', [EmployeeInfoController::class, 'addEmployee']);

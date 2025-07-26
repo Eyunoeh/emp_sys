@@ -4,7 +4,7 @@
 
 
 
-    <form id="addEmployee" method="POST" class="max-w-[80%] mx-auto">
+    <form id="addEmployee" action="/employee/new-employee" method="POST" class="max-w-[80%] mx-auto">
         @csrf
         <h1 class="text-lg font-semibold mb-5 text-slate-700">Employee infomation</h1>
 
