@@ -9,7 +9,7 @@ class Emp_info extends Model
 {
     use HasFactory;
     protected $table= 'emp_info';
-    protected $fillable = ['fname', 'lname', 'mname','birthdate','gender',
-        'marital_stat', 'contactNum', 'address',
+    protected $fillable = ['first_name', 'last_name', 'middle_name','birth_date','gender',
+        'marital_status', 'contact_number', 'address',
         ];
 }
