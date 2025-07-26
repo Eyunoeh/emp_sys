@@ -72,7 +72,7 @@
         <h1 class="text-lg font-semibold mb-5 text-slate-700">Employment Infomation</h1>
         <div class="grid md:grid-cols-3 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
-                <select  name="emp_stat" id="emp_stat" required class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required >
+                <select  name="emp_stat" id="emp_stat" required class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  >
                     <option value="" selected disabled>Choose</option>
                     <option value="1">REGULAR</option>
                     <option value="2">PROBATIONARY</option>

@@ -17,7 +17,7 @@ class EmployeeInfoController extends Controller
             'marital_stat' => ['required', 'string', 'max:255'],
             'contactNum' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-
+            'emp_stat' => ['required', 'string', 'max:255'],
         ]);
     }
 }
