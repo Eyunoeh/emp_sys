@@ -4,10 +4,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
+
     <title>Document</title>
     @vite('resources/css/app.css')
 </head>
-
+<body>
 <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 ">
     <span class="sr-only">Open sidebar</span>
     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -29,24 +33,24 @@
             </div>
 
             <div class="text-left text-sm mt-2 w-4/5 max-h-96 opacity-100  mx-auto max-h-0 opacity-0 transition-all duration-300 ease-out overflow-hidden" id="emp_submenu">
-                <h1 onclick="window.location.href='/regular'" id="" class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
+                <h1 onclick="window.location.href='/Regular'" id="" class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
                     Regulars
                 </h1>
-                <h1 onclick="window.location.href='?page=probationary'" id=""
+                <h1 onclick="window.location.href='/Probationary'" id=""
                     class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
                     Probationary
                 </h1>
-                <h1 onclick="window.location.href='?page=parttime'" id="" class=" w-full cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
+                <h1 onclick="window.location.href='/Parttime'" id="" class=" w-full cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
                     Part time
                 </h1>
 
-                <h1 onclick="window.location.href='?page=resigned'" id="" class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
+                <h1 onclick="window.location.href='/Resigned'" id="" class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
                     Resigned
                 </h1>
             </div>
 
             <li>
-                <a href="?page=EmployeeID" class=" flex items-center p-2 text-gray-900 rounded-lg ">
+                <a href="/EmployeeID" class=" flex items-center p-2 text-gray-900 rounded-lg ">
                     <i class="fa-solid fa-chess-rook"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Employee  ID</span>
                 </a>
@@ -55,14 +59,14 @@
 
 
             <li>
-                <a href="?page=User" class=" flex items-center p-2 text-gray-900 rounded-lg ">
+                <a href="/Users" class=" flex items-center p-2 text-gray-900 rounded-lg ">
                     <i class="fa-solid fa-user"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">User</span>
                 </a>
             </li>
 
             <li>
-                <a href="" class=" flex items-center p-2 text-gray-900 rounded-lg ">
+                <a href="/AddEmployee" class=" flex items-center p-2 text-gray-900 rounded-lg ">
                     <i class="fa-solid fa-user-plus"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Add Employee</span>
                 </a>
@@ -85,7 +89,10 @@
 <div id="notifBox" class="text-white" onclick="//resetAlertBox(this.id)">
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+@vite('resources/js/datatables.js')
+
+
 
 
 
@@ -97,7 +104,7 @@
 </html>
 
 @else
-    <?php header('Location: /');?>
 
 
+    <script>window.location = "/";</script>
 @endauth
