@@ -3,7 +3,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use App\Models\Emp_info;
+use App\Models\Employment_info;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -19,18 +21,30 @@ class EmployeeInfoController extends Controller
             'marital_status' => ['required', 'string', 'max:255'],
             'contact_number' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
-            'emp_stat' => ['required', 'string', 'in:1,2,3'],
-            'employee_id' => [ 'string', 'max:255', Rule::unique('employment_info', 'employeeID')],
-            'date_hired' => ['required', 'date'],
-            'regularization' => [ 'date'],
-            'end_contract' => [ 'date'],
-            'department' => [ 'string', 'max:255'],
+            'employment_status' => ['required', 'string', 'in:1,2,3'],
+            'employeeID' => [ 'string', 'max:255', Rule::unique('employment_info', 'employeeID')],
+            'dateHired' => ['required', 'date'],
+            'regularization' => ['nullable','date'],
+            'contract_end' => ['nullable','date'],
+            'department_name' => ['required','string', 'max:255'],
             'position' => ['required','string', 'max:255'],
             'designation' => ['required','string', 'max:255'],
-            'comp_email' => [ 'string', 'max:255',Rule::unique('employment_info', 'companyEmail')],
-            'alternate_email' => ['string', 'max:255',Rule::unique('employment_info', 'alternativeEmail')],
-            'rate' => ['numeric', 'string', 'max:255'],
+            'companyEmail' => ['nullable','string', 'max:255',Rule::unique('employment_info', 'companyEmail')],
+            'alternativeEmail' => ['nullable','string', 'max:255',Rule::unique('employment_info', 'alternativeEmail')],
+            'Rate' => ['nullable','numeric']
         ]);
-        Emp_info::created($employeeFields);
+        $emp = Emp_info::create($employeeFields);
+
+        $employeeFields['employee_id'] = $emp->id;
+
+          Employment_info::create($employeeFields);
+          Department::create($employeeFields);
+
+        return redirect('/');
+
     }
+    public function getEmployees(Request $request){
+
+    }
+
 }
