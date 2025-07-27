@@ -4,40 +4,25 @@
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
 
-        const empImgInput = document.getElementById('emp_img');
-        const empImg = empImgInput.files[0];
 
         const formData = new FormData(form);
 
-        if (empImg) {
-            if (empImg.type.startsWith('image/')) {
-                formData.append('file', empImg);
-            } else {
-                alert("Please select a valid image file.");
-                return;
-            }
-        }
 
         try {
-            const response = await fetch("/employee/addemployee", {
+            const response = await fetch("/employee/new-employee", {
                 method: 'POST',
                 body: formData
             });
 
             const data = await response.json();
 
-            if (data && data.response === 1) {
-                window.location.href = "/";
-            } else {
-                //Alert('notifBox', data.message, 'error');
-            }
+            console.log(data)
         } catch (error) {
             console.error("Error occurred during fetch:", error);
             alert("An error occurred while processing the request.");
         }
     });
 });*/
-
 
 document.getElementById('gender').addEventListener('change', function (){
 
@@ -69,8 +54,6 @@ document.getElementById('department').addEventListener('change', function () {
 
     if (this.value === 'OTHERS') {
         document.getElementById('departmentoption').innerHTML = departmentHTML;
-    } else {
-        document.getElementById('departmentoption').innerHTML = '';
     }
 });
 
