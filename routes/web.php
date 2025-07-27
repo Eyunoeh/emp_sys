@@ -13,16 +13,16 @@ Route::get('/', function () {
     }
 });
 
-Route::get('/Regular', function () {
+Route::get('/Employee/Regular', function () {
     return view('pages.regular');
 });
-Route::get('/Probationary', function () {
+Route::get('/Employee/Probationary', function () {
     return view('pages.probation');
 });
-Route::get('/Parttime', function () {
+Route::get('/Employee/Parttime', function () {
     return view('pages.parttime');
 });
-Route::get('/Resigned', function () {
+Route::get('/Employee/Resigned', function () {
     return view('pages.resigned');
 });
 Route::get('/Users', function () {
@@ -31,9 +31,11 @@ Route::get('/Users', function () {
 Route::get('/EmployeeID', function () {
     return view('pages.empid');
 });
-Route::get('/AddEmployee', function () {
+Route::get('Employee/AddEmployee', function () {
     return view('pages.addmep');
 });
+
+Route::get('Employee/Table/{type}', [EmployeeInfoController::class, 'getEmployees']);
 
 
 
