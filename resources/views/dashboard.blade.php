@@ -33,18 +33,18 @@
             </div>
 
             <div class="text-left text-sm mt-2 w-4/5 max-h-96 opacity-100  mx-auto max-h-0 opacity-0 transition-all duration-300 ease-out overflow-hidden" id="emp_submenu">
-                <h1 onclick="window.location.href='/Regular'" id="" class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
+                <h1 onclick="window.location.href='/Employee/Regular'" id="" class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
                     Regulars
                 </h1>
-                <h1 onclick="window.location.href='/Probationary'" id=""
+                <h1 onclick="window.location.href='/Employee/Probationary'" id=""
                     class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
                     Probationary
                 </h1>
-                <h1 onclick="window.location.href='/Parttime'" id="" class=" w-full cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
+                <h1 onclick="window.location.href='/Employee/Parttime'" id="" class=" w-full cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
                     Part time
                 </h1>
 
-                <h1 onclick="window.location.href='/Resigned'" id="" class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
+                <h1 onclick="window.location.href='/Employee/Resigned'" id="" class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
                     Resigned
                 </h1>
             </div>
@@ -66,7 +66,7 @@
             </li>
 
             <li>
-                <a href="/AddEmployee" class=" flex items-center p-2 text-gray-900 rounded-lg ">
+                <a href="/Employee/AddEmployee" class=" flex items-center p-2 text-gray-900 rounded-lg ">
                     <i class="fa-solid fa-user-plus"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Add Employee</span>
                 </a>
