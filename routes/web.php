@@ -13,6 +13,7 @@ Route::get('/', function () {
     }
 });
 
+//employee pages
 Route::get('/Employee/Regular', function () {
     return view('pages.regular');
 });
@@ -25,17 +26,29 @@ Route::get('/Employee/Parttime', function () {
 Route::get('/Employee/Resigned', function () {
     return view('pages.resigned');
 });
-Route::get('/Users', function () {
-    return view('pages.users');
-});
-Route::get('/EmployeeID', function () {
-    return view('pages.empid');
-});
+
 Route::get('Employee/AddEmployee', function () {
     return view('pages.addmep');
 });
+//employee data
+Route::get('/Employee/Table/{type}', [EmployeeInfoController::class, 'getEmployees']);
 
-Route::get('Employee/Table/{type}', [EmployeeInfoController::class, 'getEmployees']);
+
+//EmployeeInfo post
+
+Route::post('/employee/new-employee', [EmployeeInfoController::class, 'addEmployee']);
+
+
+
+
+Route::get('/Users', function () {
+    return view('pages.users');
+});
+
+Route::get('/EmployeeID', function () {
+    return view('pages.empid');
+});
+
 
 
 
@@ -54,5 +67,4 @@ Route::get('/register', function () {
 Route::post('/userlogin', [UserController::class, 'login']);
 Route::post('/userregister', [UserController::class, 'register']);
 
-//EmployeeInfo
-Route::post('/employee/new-employee', [EmployeeInfoController::class, 'addEmployee']);
+
