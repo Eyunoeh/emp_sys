@@ -37,14 +37,21 @@ class EmployeeInfoController extends Controller
 
         $employeeFields['employee_id'] = $emp->id;
 
-          Employment_info::create($employeeFields);
-          Department::create($employeeFields);
+        Employment_info::create($employeeFields);
+        Department::create($employeeFields);
 
         return redirect('/');
 
     }
-    public function getEmployees(Request $request){
+    public function getEmployees(Request $request, $type)
+    {
 
+        $employees = Emp_info::with(['employment', 'department'])
+            ->whereHas('employment', function ($query) use ($type) {
+                $query->where('employment_status', $type);
+            })
+            ->get();
+        return response()->json($employees);
     }
 
 }
