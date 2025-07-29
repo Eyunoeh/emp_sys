@@ -45,13 +45,27 @@ class EmployeeInfoController extends Controller
     }
     public function getEmployees(Request $request, $type)
     {
+        $type_map = ['Regular' => 1,
+            'Probationary' => 2,
+            'Parttime' => 3,
+            'Resigned' => 4
+        ];
+        if (!array_key_exists($type, $type_map)) {
+            return redirect('/');
+        }
+        $status = $type_map[$type];
 
         $employees = Emp_info::with(['employment', 'department'])
-            ->whereHas('employment', function ($query) use ($type) {
-                $query->where('employment_status', $type);
+            ->whereHas('employment', function ($query) use ($status) {
+                $query->where('employment_status', $status);
             })
             ->get();
-        return response()->json($employees);
+
+        return view('pages.employee_table', [
+            'employees' => $employees,
+            'type' => $type
+        ]);
     }
+
 
 }

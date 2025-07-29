@@ -66,7 +66,7 @@
             </li>
 
             <li>
-                <a href="/Employee/AddEmployee" class=" flex items-center p-2 text-gray-900 rounded-lg ">
+                <a href="/Forms/AddEmployee" class=" flex items-center p-2 text-gray-900 rounded-lg ">
                     <i class="fa-solid fa-user-plus"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Add Employee</span>
                 </a>

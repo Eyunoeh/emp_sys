@@ -7,27 +7,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     if (Auth::check()) {
-        return view('pages.regular');
+        return redirect('/Employee/Regular');
     }else{
         return view('index');
     }
 });
 
 //employee pages
-Route::get('/Employee/Regular', function () {
-    return view('pages.regular');
-});
-Route::get('/Employee/Probationary', function () {
-    return view('pages.probation');
-});
-Route::get('/Employee/Parttime', function () {
-    return view('pages.parttime');
-});
-Route::get('/Employee/Resigned', function () {
-    return view('pages.resigned');
-});
+Route::get('/Employee/{type}', [EmployeeInfoController::class, 'getEmployees']);
 
-Route::get('Employee/AddEmployee', function () {
+
+Route::get('Forms/AddEmployee', function () {
     return view('pages.addmep');
 });
 //employee data
