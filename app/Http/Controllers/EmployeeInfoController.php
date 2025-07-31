@@ -15,7 +15,7 @@ class EmployeeInfoController extends Controller
         $employeeFields = $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'middle_name' => ['required', 'string', 'max:255'],
+            'middle_name' => ['nullable', 'string', 'max:255'],
             'birth_date' => ['required', 'date'],
             'gender' => ['required', 'string', 'max:255'],
             'marital_status' => ['required', 'string', 'max:255'],
@@ -29,9 +29,9 @@ class EmployeeInfoController extends Controller
             'department_name' => ['required','string', 'max:255'],
             'position' => ['required','string', 'max:255'],
             'designation' => ['required','string', 'max:255'],
-            'companyEmail' => ['nullable','string', 'max:255',Rule::unique('employment_info', 'companyEmail')],
-            'alternativeEmail' => ['nullable','string', 'max:255',Rule::unique('employment_info', 'alternativeEmail')],
-            'Rate' => ['nullable','numeric']
+            'companyEmail' => ['string', 'max:255',Rule::unique('employment_info', 'companyEmail')],
+            'alternativeEmail' => ['string', 'max:255',Rule::unique('employment_info', 'alternativeEmail')],
+            'Rate' => ['numeric']
         ]);
         $emp = Emp_info::create($employeeFields);
 
@@ -40,7 +40,7 @@ class EmployeeInfoController extends Controller
         Employment_info::create($employeeFields);
         Department::create($employeeFields);
 
-        return redirect('/');
+        return redirect('/Forms/AddEmployee');
 
     }
     public function getEmployees(Request $request, $type)
@@ -61,10 +61,10 @@ class EmployeeInfoController extends Controller
             })
             ->get();
 
-        return view('pages.employee_table', [
+        return view('pages.employee_table',[
             'employees' => $employees,
-            'type' => $type
-        ]);
+            'type' => $type]
+        );
     }
 
 
