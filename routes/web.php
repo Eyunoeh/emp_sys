@@ -14,11 +14,18 @@ Route::get('/', function () {
 });
 
 //employee pages
-Route::get('/Employee/{type}', [EmployeeInfoController::class, 'getEmployees']);
+Route::get('/Employee/{type}', function ($type) {
+    return view('pages.employee_table', ['type' => $type]);
+});
+Route::get('/api/employees/{type}', [EmployeeInfoController::class, 'getEmployees']);
+
 
 
 Route::get('Forms/AddEmployee', function () {
     return view('pages.addmep');
+});
+Route::get('Forms/EditEmployee', function () {
+    return view('pages.editemp');
 });
 //employee data
 Route::get('/Employee/Table/{type}', [EmployeeInfoController::class, 'getEmployees']);
@@ -35,9 +42,7 @@ Route::get('/Users', function () {
     return view('pages.users');
 });
 
-Route::get('/EmployeeID', function () {
-    return view('pages.empid');
-});
+
 
 
 

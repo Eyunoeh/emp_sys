@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@9.0.3"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <title>Document</title>
     @vite('resources/css/app.css')
@@ -27,46 +28,41 @@
             <div onclick="dropdown('emp_submenu')" id="emp_tab" class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-slate-200 hover:text-slate-700">
                 <i class="fa-solid fa-user"></i>
                 <div class="flex justify-between w-full items-center">
-                    <span class="text-[15px] ml-4 font-bold">Employee </span>
+                    <span class="text-[15px] ml-4 font-bold"> Employee</span>
                 </div>
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
 
-            <div class="text-left text-sm mt-2 w-4/5 max-h-96 opacity-100  mx-auto max-h-0 opacity-0 transition-all duration-300 ease-out overflow-hidden" id="emp_submenu">
-                <h1 onclick="window.location.href='/Employee/Regular'" id="" class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
+            <div class=" text-left text-sm mt-2 w-4/5 max-h-96 opacity-100  mx-auto max-h-0 opacity-0 transition-all duration-300 ease-out overflow-hidden" id="emp_submenu">
+                <h1 onclick="window.location.href='/Employee/Regular'" id="" class="@if ( request()->path() === 'Employee/Regular')) bg-slate-300 @endif cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
                     Regulars
+
+
                 </h1>
                 <h1 onclick="window.location.href='/Employee/Probationary'" id=""
-                    class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
+                    class=" @if ( request()->path() === 'Employee/Probationary')) bg-slate-300 @endif cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
                     Probationary
                 </h1>
-                <h1 onclick="window.location.href='/Employee/Parttime'" id="" class=" w-full cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
+                <h1 onclick="window.location.href='/Employee/Parttime'" id="" class="@if ( request()->path() === 'Employee/Parttime')) bg-slate-300 @endif w-full cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
                     Part time
                 </h1>
 
-                <h1 onclick="window.location.href='/Employee/Resigned'" id="" class=" cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
+                <h1 onclick="window.location.href='/Employee/Resigned'" id="" class="@if ( request()->path() === 'Employee/Resigned')) bg-slate-300 @endif cursor-pointer p-2 hover:bg-slate-200 hover:text-slate-700 rounded-md mt-1">
                     Resigned
                 </h1>
             </div>
 
-            <li>
-                <a href="/EmployeeID" class=" flex items-center p-2 text-gray-900 rounded-lg ">
-                    <i class="fa-solid fa-chess-rook"></i>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Employee  ID</span>
-                </a>
-            </li>
-            <li>
 
 
             <li>
-                <a href="/Users" class=" flex items-center p-2 text-gray-900 rounded-lg ">
+                <a href="/Users" class="@if ( request()->path() === 'Users')) bg-slate-300 @endif flex items-center p-2 text-gray-900 rounded-lg ">
                     <i class="fa-solid fa-user"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">User</span>
                 </a>
             </li>
 
             <li>
-                <a href="/Forms/AddEmployee" class=" flex items-center p-2 text-gray-900 rounded-lg ">
+                <a href="/Forms/AddEmployee" class="@if ( request()->path() === 'Forms/AddEmployee')) bg-slate-300 @endif flex items-center p-2 text-gray-900 rounded-lg ">
                     <i class="fa-solid fa-user-plus"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap">Add Employee</span>
                 </a>

@@ -19,7 +19,7 @@ class EmployeeInfoController extends Controller
             'birth_date' => ['required', 'date'],
             'gender' => ['required', 'string', 'max:255'],
             'marital_status' => ['required', 'string', 'max:255'],
-            'contact_number' => ['required', 'string', 'max:255'],
+            'contact_number' => ['required', 'string', 'max:255', Rule::unique('emp_info', 'contact_number')],
             'address' => ['required', 'string', 'max:255'],
             'employment_status' => ['required', 'string', 'in:1,2,3'],
             'employeeID' => [ 'string', 'max:255', Rule::unique('employment_info', 'employeeID')],
@@ -29,8 +29,8 @@ class EmployeeInfoController extends Controller
             'department_name' => ['required','string', 'max:255'],
             'position' => ['required','string', 'max:255'],
             'designation' => ['required','string', 'max:255'],
-            'companyEmail' => ['string', 'max:255',Rule::unique('employment_info', 'companyEmail')],
-            'alternativeEmail' => ['string', 'max:255',Rule::unique('employment_info', 'alternativeEmail')],
+            'companyEmail' => ['nullable', 'string', 'max:255',Rule::unique('employment_info', 'companyEmail')],
+            'alternativeEmail' => ['nullable','string', 'max:255',Rule::unique('employment_info', 'alternativeEmail')],
             'Rate' => ['numeric']
         ]);
         $emp = Emp_info::create($employeeFields);
@@ -51,8 +51,9 @@ class EmployeeInfoController extends Controller
             'Resigned' => 4
         ];
         if (!array_key_exists($type, $type_map)) {
-            return redirect('/');
+            abort(400, 'Invalid employee type.');
         }
+
         $status = $type_map[$type];
 
         $employees = Emp_info::with(['employment', 'department'])
@@ -61,10 +62,9 @@ class EmployeeInfoController extends Controller
             })
             ->get();
 
-        return view('pages.employee_table',[
-            'employees' => $employees,
-            'type' => $type]
-        );
+        return [
+            'data' => $employees,
+            'type' => $type];
     }
 
 
