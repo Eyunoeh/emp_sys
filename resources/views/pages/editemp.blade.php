@@ -147,6 +147,6 @@
         </div>
     </form>
 
-    @vite ('resources/js/addemployee.js')
+    @vite ('resources/js/employeeForms.js')
 
 @endsection
