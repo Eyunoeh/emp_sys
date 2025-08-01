@@ -17,9 +17,6 @@ Route::get('/', function () {
 Route::get('/Employee/{type}', function ($type) {
     return view('pages.employee_table', ['type' => $type]);
 });
-Route::get('/api/employees/{type}', [EmployeeInfoController::class, 'getEmployees']);
-
-
 
 Route::get('Forms/AddEmployee', function () {
     return view('pages.addmep');
@@ -36,14 +33,13 @@ Route::get('/Employee/Table/{type}', [EmployeeInfoController::class, 'getEmploye
 Route::post('/employee/new-employee', [EmployeeInfoController::class, 'addEmployee']);
 
 
-
-
 Route::get('/Users', function () {
     return view('pages.users');
 });
 
-
-
+//api
+Route::get('/api/employees/{type}', [EmployeeInfoController::class, 'getEmployees']);
+Route::get('api/employee',[EmployeeInfoController::class, 'getEmployee']);
 
 
 
