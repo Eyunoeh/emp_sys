@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form id="addEmployee" action="/employee/new-employee" method="POST" class="max-w-[80%] mx-auto">
+    <form id="editEmployee" action="/employee/update-employee" method="POST" class="max-w-[80%] mx-auto">
         @csrf
         <h1 class="text-lg font-semibold mb-5 text-slate-700">Employee information</h1>
 
@@ -148,5 +148,6 @@
     </form>
 
     @vite ('resources/js/employeeForms.js')
+    @vite ('resources/js/editemployee.js')
 
 @endsection
