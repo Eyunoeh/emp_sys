@@ -43,7 +43,7 @@ class EmployeeInfoController extends Controller
         return redirect('/Forms/AddEmployee');
 
     }
-    public function getEmployees(Request $request, $type)
+    public function getEmployees(Request $request, $type): array
     {
         $type_map = ['Regular' => 1,
             'Probationary' => 2,
@@ -66,6 +66,26 @@ class EmployeeInfoController extends Controller
             'data' => $employees,
             'type' => $type];
     }
+    public function getEmployee(Request $request)
+    {
+        $employeeId = $request->get('employeeID');
+
+        $employee = Emp_info::with(['employment', 'department'])
+            ->whereHas('employment', function ($query) use ($employeeId) {
+                $query->where('employeeID', $employeeId);
+            })
+            ->get()
+            ->makeHidden(['emp_id', 'created_at', 'updated_at'])
+            ->each(function ($emp) {
+                $emp->employment->makeHidden(['created_at', 'updated_at', 'employment_info_id']);
+                $emp->department->makeHidden(['created_at', 'updated_at', 'department_id']);
+            });
+
+
+
+        return ['employee' => $employee];
+    }
+
 
 
 }
