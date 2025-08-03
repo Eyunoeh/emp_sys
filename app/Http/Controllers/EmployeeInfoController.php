@@ -10,32 +10,44 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class EmployeeInfoController extends Controller
+
 {
-    public function addEmployee(Request $request){
-        $employeeFields = $request->validate([
+    protected function employeeFields($emp_id = null)
+    {
+        return [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             'middle_name' => ['nullable', 'string', 'max:255'],
             'birth_date' => ['required', 'date'],
             'gender' => ['required', 'string', 'max:255'],
             'marital_status' => ['required', 'string', 'max:255'],
-            'contact_number' => ['required', 'string', 'max:255', Rule::unique('emp_info', 'contact_number')],
+            'contact_number' => ['required', 'string', 'max:255',
+                Rule::unique('emp_info', 'contact_number')->ignore($emp_id, 'emp_id'),],
             'address' => ['required', 'string', 'max:255'],
             'employment_status' => ['required', 'string', 'in:1,2,3'],
-            'employeeID' => [ 'string', 'max:255', Rule::unique('employment_info', 'employeeID')],
+            'employeeID' => ['string', 'max:255',
+                Rule::unique('employment_info', 'employeeID')->ignore($emp_id, 'employee_id'),],
             'dateHired' => ['required', 'date'],
-            'regularization' => ['nullable','date'],
-            'contract_end' => ['nullable','date'],
-            'department_name' => ['required','string', 'max:255'],
-            'position' => ['required','string', 'max:255'],
-            'designation' => ['required','string', 'max:255'],
-            'companyEmail' => ['nullable', 'string', 'max:255',Rule::unique('employment_info', 'companyEmail')],
-            'alternativeEmail' => ['nullable','string', 'max:255',Rule::unique('employment_info', 'alternativeEmail')],
-            'Rate' => ['numeric']
-        ]);
+            'regularization' => ['nullable', 'date'],
+            'contract_end' => ['nullable', 'date'],
+            'department_name' => ['required', 'string', 'max:255'],
+            'position' => ['required', 'string', 'max:255'],
+            'designation' => ['required', 'string', 'max:255'],
+            'companyEmail' => ['nullable', 'string', 'max:255',
+                Rule::unique('employment_info', 'companyEmail')->ignore($emp_id, 'employee_id'),],
+            'alternativeEmail' => ['nullable', 'string', 'max:255',
+                Rule::unique('employment_info', 'alternativeEmail')->ignore($emp_id, 'employee_id'),],
+            'Rate' => ['numeric'],
+        ];
+    }
+    public function addEmployee(Request $request){
+        $employeeFields = $request->validate($this->employeeFields());
+        if(!$employeeFields){
+            return redirect('/Forms/AddEmployee')->with('request', $request);
+        }
         $emp = Emp_info::create($employeeFields);
 
-        $employeeFields['employee_id'] = $emp->id;
+        $employeeFields['employee_id'] = $emp->emp_id;
 
         Employment_info::create($employeeFields);
         Department::create($employeeFields);
@@ -85,6 +97,37 @@ class EmployeeInfoController extends Controller
 
         return ['employee' => $employee];
     }
+
+    public function updateEmployee(Request $request)
+    {
+
+
+        $originalEmpID= $request['origEmpID'];
+
+        $employment = Employment_info::where('employeeID', $originalEmpID)->firstOrFail();
+
+
+        $employeeFields = $request->validate($this->employeeFields($employment->employee_id));
+
+
+
+        $emp = Emp_info::where('emp_id', $employment->employee_id)->firstOrFail();
+
+
+        $department = Department::where('employee_id', $emp->emp_id)->first();
+
+        $emp->update($employeeFields);
+        $employment->update($employeeFields);
+        $department->update($employeeFields);
+
+        $newempID= $employeeFields['employeeID'];
+
+        return redirect('/Forms/EditEmployee?employee='.$newempID);
+    }
+
+
+
+
 
 
 

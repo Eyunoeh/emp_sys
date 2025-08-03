@@ -28,5 +28,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     emp_form.querySelector('input[name="companyEmail"]').value = emp_details.employment['companyEmail'];
     emp_form.querySelector('input[name="alternativeEmail"]').value = emp_details.employment['alternativeEmail'];
     emp_form.querySelector('input[name="Rate"]').value = emp_details.employment['Rate'];
+    emp_form.querySelector('input[name="origEmpID"]').value = employeeID;
     })
 

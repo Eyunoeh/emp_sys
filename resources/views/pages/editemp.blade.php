@@ -16,6 +16,7 @@
 
     <form id="editEmployee" action="/employee/update-employee" method="POST" class="max-w-[80%] mx-auto">
         @csrf
+        @method('PUT')
         <h1 class="text-lg font-semibold mb-5 text-slate-700">Employee information</h1>
 
         <div class="grid md:grid-cols-3 md:gap-6">
@@ -137,7 +138,7 @@
             </div>
         </div>
 
-
+        <input type="hidden" name="origEmpID" id="origEmpID">
         <div class="grid md:grid-cols-1 md:gap-6 mt-5">
             <div class="relative z-0 w-full mb-5 group">
                 <button type="submit" class="w-full text-white btn btn-success">Update</button>
