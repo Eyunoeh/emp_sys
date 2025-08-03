@@ -9,6 +9,7 @@ class Emp_info extends Model
 {
     use HasFactory;
     protected $table= 'emp_info';
+    protected $primaryKey = 'emp_id';
     protected $fillable = ['first_name', 'last_name', 'middle_name','birth_date','gender',
         'marital_status', 'contact_number', 'address',
         ];
@@ -21,4 +22,5 @@ class Emp_info extends Model
     {
         return $this->hasOne(Department::class, 'employee_id', 'emp_id');
     }
+
 }

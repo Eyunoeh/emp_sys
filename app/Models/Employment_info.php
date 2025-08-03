@@ -9,6 +9,7 @@ class Employment_info extends Model
 {
     use HasFactory;
     protected $table = 'employment_info';
+    protected $primaryKey = 'created_at';
     protected $fillable = ['employment_status', 'employeeID', 'dateHired',
         'regularization', 'contract_end', 'companyEmail', 'alternativeEmail',
         'Rate', 'employee_id'];
