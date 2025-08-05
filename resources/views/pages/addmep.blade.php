@@ -20,28 +20,28 @@
 
         <div class="grid md:grid-cols-3 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
-                <input onkeyup="this.value = this.value.toUpperCase()" type="text"  name="first_name" id="first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                <label for="first_name" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First Name</label>
+                <input onkeyup="this.value = this.value.toUpperCase()" type="text"  name="first_name" value="{{old('first_name')}}" id="first_name" class=" block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                <label for="first_name" class="peer-focus:font-medium absolute text-sm  text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First Name</label>
             </div>
             <div class="relative z-0 w-full mb-5 group">
-                <input onkeyup="this.value = this.value.toUpperCase()" type="text"  name="last_name" id="last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                <input onkeyup="this.value = this.value.toUpperCase()" type="text" value="{{old('last_name')}}"  name="last_name" id="last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                 <label for="last_name" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last Name</label>
             </div>
             <div class="relative z-0 w-full mb-5 group">
-                <input onkeyup="this.value = this.value.toUpperCase()" type="text"  name="middle_name" id="mname" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+                <input onkeyup="this.value = this.value.toUpperCase()" type="text" value="{{old('middle_name')}}"  name="middle_name" id="mname" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
                 <label for="middle_name" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Middle Name</label>
             </div>
         </div>
         <div class="grid md:grid-cols-3 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
-                <input  type="date"  name="birth_date" id="birthdate" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" max="" placeholder=" " required />
+                <input  type="date"  name="birth_date" value="{{old('birth_date')}}" id="birthdate" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" max="" placeholder=" " required />
                 <label for="birth_date" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Birthdate</label>
             </div>
             <div class="relative z-0 w-full mb-5 group" id="genderoption">
                 <select   name="gender" id="gender" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required >
                     <option value="" selected disabled>Choose</option>
-                    <option value="MALE">MALE</option>
-                    <option value="FEMALE">FEMALE</option>
+                    <option value="MALE" @if(old('gender') == "MALE") selected @endif>MALE</option>
+                    <option value="FEMALE" @if(old('gender') == "FEMALE") selected @endif>FEMALE</option>
                     <option value="OTHERS">OTHERS</option>
                 </select>
                 <label for="gender" class="peer-focus:font-medium absolute text-sm text-gray-500  transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Gender</label>
@@ -52,10 +52,10 @@
                 <select name="marital_status" id="marital_stat" required
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer">
                     <option value="" selected disabled>Choose</option>
-                    <option value="SINGLE">SINGLE</option>
-                    <option value="MARRIED">MARRIED</option>
-                    <option value="WIDOWED">WIDOWED</option>
-                    <option value="DIVORCE">DIVORCE</option>
+                    <option value="SINGLE" @if(old('marital_status') == "SINGLE") selected @endif>SINGLE</option>
+                    <option value="MARRIED" @if(old('marital_status') == "MARRIED") selected @endif>MARRIED</option>
+                    <option value="WIDOWED" @if(old('marital_status') == "WIDOWED") selected @endif>WIDOWED</option>
+                    <option value="DIVORCE" @if(old('marital_status') == "DIVORCE") selected @endif>DIVORCE</option>
                     <option value="OTHERS">OTHERS</option>
                 </select>
                 <label for="marital_stat" class="peer-focus:font-medium absolute text-sm text-gray-500  transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
@@ -66,12 +66,12 @@
         </div>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
-                <input  type="number"  oninput="this.value = this.value.slice(0, 11)"   name="contact_number" id="contactNum" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                <input  type="number" value="{{old('contact_number')}}" oninput="this.value = this.value.slice(0, 11)"   name="contact_number" id="contactNum" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 @error('contact_number')  border-error @else  border-gray-300 @enderror appearance-none  focus:outline-none focus:ring-0  focus:border-blue-600 peer" placeholder=" " required />
                 <label for="contact_number" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Contact Number</label>
             </div>
 
             <div class="relative z-0 w-full mb-5 group">
-                <input onkeyup="this.value = this.value.toUpperCase()" type="text" name="address" id="address" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                <input value="{{old('address')}}" onkeyup="this.value = this.value.toUpperCase()" type="text" name="address" id="address" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                 <label for="address" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Address</label>
             </div>
         </div>
@@ -84,19 +84,19 @@
             <div class="relative z-0 w-full mb-5 group">
                 <select  name="employment_status" id="employment_status" required class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  >
                     <option value="" selected disabled>Choose</option>
-                    <option value="1">REGULAR</option>
-                    <option value="2">PROBATIONARY</option>
-                    <option value="3">PART TIME</option>
+                    <option value="1" @if(old('employment_status') == "1") selected @endif>REGULAR</option>
+                    <option value="2" @if(old('employment_status') == "2") selected @endif>PROBATIONARY</option>
+                    <option value="3" @if(old('employment_status') == "3") selected @endif>PART TIME</option>
                 </select>
                 <label for="employment_status" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Employment Status</label>
 
             </div>
             <div class="relative z-0 w-full mb-5 group">
-                <input type="text"  name="employeeID" id="employee_id" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+                <input type="text" value="{{old('employeeID')}}" name="employeeID" id="employee_id" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 @error('employeeID')  border-error @else  border-gray-300 @enderror appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
                 <label for="employee_id" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Employee ID</label>
             </div>
             <div class="relative z-0 w-full mb-5 group">
-                <input type="date"  name="dateHired" id="date_hired" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+                <input type="date" value="{{old('dateHired')}}"  name="dateHired" id="date_hired" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
                 <label for="date_hired" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Date Hired</label>
             </div>
 
@@ -105,12 +105,12 @@
 
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
-                <input type="date"  name="regularization" id="regularization" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+                <input type="date" value="{{old('regularization')}}"  name="regularization" id="regularization" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
                 <label for="regularization" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Regularization</label>
             </div>
 
             <div class="relative z-0 w-full mb-5 group">
-                <input type="date"  name="contract_end" id="end_contract" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+                <input type="date" value="{{old('contract_end')}}" name="contract_end" id="end_contract" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
                 <label for="contract_end" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">End of Contract</label>
             </div>
 
@@ -120,10 +120,10 @@
             <div class="relative z-0 w-full mb-5 group" id="departmentoption">
                 <select  name="department_name" id="department" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required >
                     <option value="" selected disabled>Choose</option>
-                    <option value="HR Department">HR DEPARTMENT</option>
-                    <option value="Accounting Department">ACCOUNTING DEPARTMENT</option>
-                    <option value="Sales Department">SALES DEPARTMENT</option>
-                    <option value="Operation Department">OPERATION DEPARTMENT</option>
+                    <option value="HR Department" @if(old('department_name') == "HR Department") selected @endif>HR DEPARTMENT</option>
+                    <option value="Accounting Department" @if(old('department_name') == "Accounting Department") selected @endif>ACCOUNTING DEPARTMENT</option>
+                    <option value="Sales Department" @if(old('department_name') == "Sales Department") selected @endif>SALES DEPARTMENT</option>
+                    <option value="Operation Department" @if(old('department_name') == "Operation Department") selected @endif>OPERATION DEPARTMENT</option>
                     <option value="OTHERS">OTHERS</option>
                 </select>
                 <label for="department" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Department</label>
@@ -133,26 +133,26 @@
 
 
             <div class="relative z-0 w-full mb-5 group">
-                <input type="text"  name="position" id="position" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
-                <label for="position" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Position</label>
+                <input type="text" value="{{old('position')}}"   name="position" id="position" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                <label for="position"  class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Position</label>
             </div>
             <div class="relative z-0 w-full mb-5 group">
-                <input type="text"  name="designation" id="designation" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                <input type="text" value="{{old('designation')}}" name="designation" id="designation" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                 <label for="designation" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Designation</label>
             </div>
         </div>
 
         <div class="grid md:grid-cols-3 md:gap-6">
             <div class="relative z-0 w-full mb-5 group">
-                <input type="email"  name="companyEmail" id="comp_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=""  />
+                <input type="email" value="{{old('companyEmail')}}"  name="companyEmail" id="comp_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 @error('companyEmail')  border-error @else  border-gray-300 @enderror appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=""  />
                 <label for="comp_email" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Company Email (Optional)</label>
             </div>
             <div class="relative z-0 w-full mb-5 group">
-                <input type="email"  name="alternativeEmail" id="alternate_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=""  />
+                <input type="email" value="{{old('alternativeEmail')}}"  name="alternativeEmail" id="alternate_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 @error('alternativeEmail')  border-error @else  border-gray-300 @enderror appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=""  />
                 <label for="alternate_email" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Alternative Email (Optional)</label>
             </div>
             <div class="relative z-0 w-full mb-5 group">
-                <input type="number"  name="Rate" id="rate" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
+                <input type="number" value="{{old('Rate')}}"  name="Rate" id="rate" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  />
                 <label for="rate" class="peer-focus:font-medium absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Rate per day</label>
             </div>
         </div>
